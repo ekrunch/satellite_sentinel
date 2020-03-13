@@ -59,3 +59,8 @@
   loop_control:
     loop_var: content_view_name
 
+- name: "PAUSE: Allow Satellite some time to calm down after any changes were made. Pausing for {{ sentinel_pause_after_tasks }}  seconds."
+  pause:
+    seconds: "{{ sentinel_pause_after_tasks|int }}"
+  when: "sentinel_pause_after_tasks|int > 0"
+

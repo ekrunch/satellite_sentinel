@@ -10,3 +10,7 @@ satellite_server_organization="Stark Enterprises"
 # Directory pointing to json files with Sentinel commands
 # If you are using multiple workflow directories, consider passing this variable on the command line
 sentinel_workflow_directory="/home/tstark/Code/satellite_sentinel/workflows"
+
+# Pause after each configuration file is processed. This is the number of seconds to wait.
+# Default / Recommendation is 60 seconds.
+sentinel_pause_after_tasks=60
