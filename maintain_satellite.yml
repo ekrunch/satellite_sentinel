@@ -1,5 +1,5 @@
 ---
-- hosts: bastionhosts
+- hosts: all
   gather_facts: no
   tasks:
 
