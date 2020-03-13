@@ -1,0 +1,61 @@
+- set_fact:
+    from_lookup_json: "{{ lookup('file', config_file) | from_json }}"
+
+- set_fact:
+    task_list: "{{ from_lookup_json.actions }}"
+
+- name: Show configuration file provided 
+  debug:
+    var: task_list
+
+- name: "PUBLISH : Publish Content Views (If Present in Config)"
+  include_tasks: publish_cv.yaml
+  vars:
+    cvname: "{{ item }}"
+  with_items: "{{ task_list.publishcv }}"
+  when: "task_list.publishcv is defined and task_list.publishcv | length > 0"
+
+- name: "PUBLISH : Publish Composite Content Views (If Present in Config)"
+  include_tasks: publish_cv.yaml
+  vars:
+    cvname: "{{ item }}"
+  with_items: "{{ task_list.publishccv }}"
+  when: "task_list.publishccv is defined and task_list.publishccv | length > 0"
+
+- name: "PROMOTE : Promote Content Views (If Present in Config)"
+  include_tasks: promote_cv.yaml
+  vars:
+    cvs : "{{ task_list.promotecv.cvs }}"
+    envs : "{{ task_list.promotecv.environments }}"
+  when: "task_list.promotecv is defined and task_list.promotecv | length > 0"
+
+- name: "PURGE : Load versions of Content Views (If Present in Config)"
+  theforeman.foreman.foreman_search_facts:
+    username: "{{ satellite_server_user }}"
+    password: "{{ satellite_server_password }}"
+    server_url: "{{ satellite_server_url }}"
+    resource: "content_view_versions"
+    #full_details: yes
+    validate_certs: no
+    organization: "{{ satellite_server_organization }}"
+  register: cv_versions  
+  when: "task_list.purgeold is defined and task_list.purgeold | length > 0"
+  
+- name: "PURGE : Remove old versions of Composite Content Views (If Present in Config)"
+  include_tasks: purge_old_cv_verions.yaml
+  vars:
+    keeprevisions: "{{ task_list.purgeold.keeprevisions }}"
+  with_items: "{{ task_list.purgeold.ccvs }}"
+  when: "task_list.purgeold is defined and task_list.purgeold | length > 0"
+  loop_control:
+    loop_var: content_view_name
+
+- name: "PURGE : Remove old versions of Content Views (If Present in Config)"
+  include_tasks: purge_old_cv_verions.yaml
+  vars:
+    keeprevisions: "{{ task_list.purgeold.keeprevisions }}"
+  with_items: "{{ task_list.purgeold.cvs }}"
+  when: "task_list.purgeold is defined and task_list.purgeold | length > 0"
+  loop_control:
+    loop_var: content_view_name
+

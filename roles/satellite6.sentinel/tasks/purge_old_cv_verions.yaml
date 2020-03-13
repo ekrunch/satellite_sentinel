@@ -1,0 +1,25 @@
+- name: Clear version array 
+  set_fact:
+    cv_version_array: []
+
+- name: Add versions to array 
+  set_fact:
+    cv_version_array: "{{ cv_version_array }} + [ '{{ item.version }}' ]" 
+  with_items: "{{ cv_versions | json_query(\"resources[?content_view.name == '\" + content_view_name + \"']\") }}"
+  when: item.environments | length == 0
+
+#- name: Sort version array
+#  set_fact:
+#    cv_version_array: "{{ cv_version_array[keeprevisions|int:] | sort(reverse=True) }}"
+
+- name: "Remove old CV/CCVs Versions - CV Name : {{ content_view_name }}"
+  theforeman.foreman.katello_content_view_version:
+    validate_certs: No
+    username: "{{ satellite_server_user }}"
+    password: "{{ satellite_server_password }}"
+    server_url: "{{ satellite_server_url }}"
+    content_view: "{{ content_view_name }}"
+    organization: "{{ satellite_server_organization }}"
+    version: "{{ item }}"
+    state: absent
+  with_items: "{{ cv_version_array[keeprevisions|int:] | sort(reverse=True) }}"

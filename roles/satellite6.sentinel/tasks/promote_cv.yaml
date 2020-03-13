@@ -1,0 +1,11 @@
+
+- name: "Promote CV/CCVs to Selected Environments"
+  theforeman.foreman.katello_content_view_version:
+    validate_certs: No
+    username: "{{ satellite_server_user }}"
+    password: "{{ satellite_server_password }}"
+    server_url: "{{ satellite_server_url }}"
+    content_view: "{{ item }}"
+    organization: "{{ satellite_server_organization }}"
+    lifecycle_environments: "{{ envs }}"
+  with_items: "{{ cvs }}"  

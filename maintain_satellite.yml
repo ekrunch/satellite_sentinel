@@ -1,0 +1,8 @@
+---
+- hosts: bastionhosts
+  gather_facts: no
+  tasks:
+
+    - name: Invoke Satellite Sentinel role
+      import_role:
+        name: satellite6.sentinel

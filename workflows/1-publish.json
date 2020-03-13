@@ -1,0 +1,17 @@
+{
+  "actions": {
+    "publishcv": [
+      "Ansible Engine 2.9",
+      "RHEL 7",
+      "RHEL 7 Kickstart",
+      "RHEL 8",
+      "RHEL 8 Kickstart",
+      "Satellite Tools"
+    ],
+    "publishccv": [
+       "RHEL 7 - Standard Build",
+       "RHEL 8 - Standard Build",
+       "RHEL 8 - Standard Build with Ansible"
+    ]
+  }
+}

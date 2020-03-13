@@ -1,0 +1,14 @@
+{
+  "actions": {
+    "promotecv": {
+      "environments": [
+        "Development"
+      ],
+      "cvs": [
+        "RHEL 7 - Standard Build",
+        "RHEL 8 - Standard Build",
+        "RHEL 8 - Standard Build with Ansible"
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+- name: Process Configuration File
+  include_tasks: process_config_file.yaml
+  vars:
+    config_file: "{{ config_file_name }}"
+  with_items: "{{ lookup('fileglob', sentinel_workflow_directory + '/*.json',wantlist=True) | sort }}"
+  loop_control:
+    loop_var: config_file_name
+

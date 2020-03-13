@@ -1,0 +1,12 @@
+[bastionhosts]
+localhost ansible_connection=local
+
+[bastionhosts:vars]
+satellite_server_url="https://satellite.internal.yourdomain.com"
+satellite_server_user="admin"
+satellite_server_password="SuperSecretAdminPassword"
+satellite_server_organization="Stark Enterprises"
+
+# Directory pointing to json files with Sentinel commands
+# If you are using multiple workflow directories, consider passing this variable on the command line
+sentinel_workflow_directory="/home/tstark/Code/satellite_sentinel/workflows"
