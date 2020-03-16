@@ -8,13 +8,9 @@
   with_items: "{{ cv_versions | json_query(\"resources[?content_view.name == '\" + content_view_name + \"']\") }}"
   when: item.environments | length == 0
 
-#- name: Sort version array
-#  set_fact:
-#    cv_version_array: "{{ cv_version_array[keeprevisions|int:] | sort(reverse=True) }}"
-
 - name: "Remove old CV/CCVs Versions - CV Name : {{ content_view_name }}"
   theforeman.foreman.katello_content_view_version:
-    validate_certs: No
+    validate_certs: "{{ satellite_validate_ssl }}"
     username: "{{ satellite_server_user }}"
     password: "{{ satellite_server_password }}"
     server_url: "{{ satellite_server_url }}"

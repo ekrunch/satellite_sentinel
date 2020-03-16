@@ -1,2 +1,3 @@
 ---
 sentinel_pause_after_tasks: 60
+satellite_validate_ssl: No

@@ -1,6 +1,6 @@
 - name: "Publish CV/CCV - Name : {{ cvname }}"
   theforeman.foreman.katello_content_view_version:
-    validate_certs: No
+    validate_certs: "{{ satellite_validate_ssl }}"
     username: "{{ satellite_server_user }}"
     password: "{{ satellite_server_password }}"
     server_url: "{{ satellite_server_url }}"

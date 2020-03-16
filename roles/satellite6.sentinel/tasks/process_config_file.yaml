@@ -4,7 +4,7 @@
 - set_fact:
     task_list: "{{ from_lookup_json.actions }}"
 
-- name: Show configuration file provided 
+- name: "PROCESS : Show configuration file - {{ config_file }}"
   debug:
     var: task_list
 
@@ -31,12 +31,12 @@
 
 - name: "PURGE : Load versions of Content Views (If Present in Config)"
   theforeman.foreman.foreman_search_facts:
+    validate_certs: "{{ satellite_validate_ssl }}"
     username: "{{ satellite_server_user }}"
     password: "{{ satellite_server_password }}"
     server_url: "{{ satellite_server_url }}"
     resource: "content_view_versions"
     #full_details: yes
-    validate_certs: no
     organization: "{{ satellite_server_organization }}"
   register: cv_versions  
   when: "task_list.purgeold is defined and task_list.purgeold | length > 0"
