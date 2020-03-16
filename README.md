@@ -10,8 +10,8 @@
 
 ##### Usage
 
-- Customize the inventory.sample and copy it to custom/inventory. The scripts are keyed to look for this inventory file. If you're familiar with Ansible, you can redirect it to a different inventory file as needed.
-- Customize the sample workflow flipes in the ./workflows directory. The format is relatively self explanatory if you now Red Hat Satellite.
+- Customize the inventory.sample and copy it to custom/inventory. The example shell scripts are keyed to look for this inventory file. If you're familiar with Ansible, you can redirect it to a different inventory file as needed.
+- Customize the sample workflow files in the ./workflows directory. The format is relatively self explanatory if you know Red Hat Satellite.
   - The provided workflow files do the following
     - __1-publish.json__ - Publishes Content Views and then the Composite Content Views that depend on them. This action creates a new version of the CV/CCV from what is in the library.
     - __2-promote-dev.json__ - Promote the new Content Views into Dev  **TODO** : Add direct version support, currently always uses "latest"
