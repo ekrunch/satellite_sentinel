@@ -1,6 +1,7 @@
 {
   "actions": {
     "promotecv": {
+      "currentenvironment": "Library",
       "environments": [
         "Development"
       ],

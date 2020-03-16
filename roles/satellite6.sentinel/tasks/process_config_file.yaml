@@ -27,6 +27,7 @@
   vars:
     cvs : "{{ task_list.promotecv.cvs }}"
     envs : "{{ task_list.promotecv.environments }}"
+    currentenv : "{{ task_list.promotecv.currentenvironment }}"
   when: "task_list.promotecv is defined and task_list.promotecv | length > 0"
 
 - name: "PURGE : Load versions of Content Views (If Present in Config)"

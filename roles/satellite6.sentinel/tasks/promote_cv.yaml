@@ -7,5 +7,6 @@
     server_url: "{{ satellite_server_url }}"
     content_view: "{{ item }}"
     organization: "{{ satellite_server_organization }}"
+    current_lifecycle_environment: "{{ currentenv }}"
     lifecycle_environments: "{{ envs }}"
   with_items: "{{ cvs }}"  
