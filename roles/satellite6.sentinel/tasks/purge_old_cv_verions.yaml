@@ -18,4 +18,5 @@
     organization: "{{ satellite_server_organization }}"
     version: "{{ item }}"
     state: absent
+  ignore_errors: yes
   with_items: "{{ cv_version_array[keeprevisions|int:] | sort(reverse=True) }}"
