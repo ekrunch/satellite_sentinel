@@ -1,6 +1,6 @@
 
 - name: "Promote CV/CCVs to Selected Environments"
-  theforeman.foreman.katello_content_view_version:
+  redhat.satellite.content_view_version:
     validate_certs: "{{ satellite_validate_ssl }}"
     username: "{{ satellite_server_user }}"
     password: "{{ satellite_server_password }}"

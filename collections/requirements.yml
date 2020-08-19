@@ -1,4 +1,4 @@
 ---
 collections:
-- name: theforeman.foreman
+- name: redhat.satellite
   #  version: 0.7.0

@@ -9,7 +9,7 @@
   when: item.environments | length == 0
 
 - name: "Remove old CV/CCVs Versions - CV Name : {{ content_view_name }}"
-  theforeman.foreman.katello_content_view_version:
+  redhat.satellite.content_view_version:
     validate_certs: "{{ satellite_validate_ssl }}"
     username: "{{ satellite_server_user }}"
     password: "{{ satellite_server_password }}"

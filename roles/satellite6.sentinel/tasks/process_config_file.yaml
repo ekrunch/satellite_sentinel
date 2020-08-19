@@ -31,7 +31,7 @@
   when: "task_list.promotecv is defined and task_list.promotecv | length > 0"
 
 - name: "PURGE : Load versions of Content Views (If Present in Config)"
-  theforeman.foreman.foreman_search_facts:
+  redhat.satellite.resource_info:
     validate_certs: "{{ satellite_validate_ssl }}"
     username: "{{ satellite_server_user }}"
     password: "{{ satellite_server_password }}"
