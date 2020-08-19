@@ -1,4 +1,4 @@
 ---
 collections:
 - name: theforeman.foreman
-  version: 0.7.0
+  #  version: 0.7.0
