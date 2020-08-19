@@ -1,0 +1,27 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+
+    - name: "Create a host with build context"
+      redhat.satellite.host:
+        validate_certs: no
+        username: "{{ satellite_server_user }}"
+        password: "{{ satellite_server_password }}"
+        server_url: "{{ satellite_server_url }}"
+        organization: "{{ satellite_server_organization }}"
+        location: "{{ satellite_server_location }}"
+        name: "{{ target_hostname }}"
+        hostgroup: "{{ target_hostgroup }}"
+        ip: "{{ target_ip }}"
+        build: true
+        state: present
+
+    - name: "Power on host for provisioning"
+      redhat.satellite.host_power:
+        validate_certs: no
+        username: "{{ satellite_server_user }}"
+        password: "{{ satellite_server_password }}"
+        server_url: "{{ satellite_server_url }}"
+        name: "{{ target_hostname }}"
+        state: "on"
