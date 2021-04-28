@@ -1,7 +1,7 @@
 {
   "actions": {
     "publishcv": [
-      "Ansible Engine 2.9",
+      "Ansible Engine",
       "RHEL 7",
       "RHEL 7 Kickstart",
       "RHEL 8",
@@ -10,8 +10,7 @@
     ],
     "publishccv": [
        "RHEL 7 - Standard Build",
-       "RHEL 8 - Standard Build",
-       "RHEL 8 - Standard Build with Ansible"
+       "RHEL 8 - Standard Build"
     ]
   }
 }
