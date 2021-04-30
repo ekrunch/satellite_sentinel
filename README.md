@@ -5,8 +5,9 @@
 
 **Requirements** : 
 
-- Ansible 2.7-ish. Older versions may work but the Foreman modules are tested against 2.7
-- Ansible Foreman Modules - [https://github.com/theforeman/foreman-ansible-modules/]
+- Ansible 2.9-ish. Older versions may work but I've been testing using 2.9
+- Ansible Satellite Modules - [https://cloud.redhat.com/ansible/automation-hub/repo/published/redhat/satellite/docs]
+  - These modules are part of the Ansible Certified Content repo and will be pulled automatically from the requirements. The Foreman modules would probably work too but require code changes. Note that to access certified modules Ansible (or Ansible Tower) will have to be configured to access the certified repository.
 
 ##### Usage
 
